@@ -35,6 +35,14 @@ public class PatternProcessor {
         return false;
     }
 
+    public static boolean hasKeyWordInLine(String line){
+        return line.contains("Рахунок:");
+    }
+
+    public static boolean hasAccountInLine(String line){
+        return getAccountNumberFromLine(line) != null;
+    }
+
     public static String getAccountNumberFromLine(String line){
         String[] splitLine = line.split(" ");
         String number = null;

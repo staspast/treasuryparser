@@ -13,7 +13,7 @@ public class ArgumentProcessor {
     static {
         arguments = new HashMap<>();
         arguments.put(Argument.CONFIGURATION_FILE, "vip_bars.ini");
-        arguments.put(Argument.PATTERN_FILE, "acctptrn.txt");
+        arguments.put(Argument.PATTERN_FILE, "accptrn.txt");
         arguments.put(Argument.EMAIL_CONFIG_FILE, "MyCfg.ini");
         arguments.put(Argument.CONFIGURATION_DIRECTORY, ".\\config");
     }

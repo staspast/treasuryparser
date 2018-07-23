@@ -6,6 +6,6 @@ public class DbfFileProcessor extends FileProcessor{
 
     @Override
     public void processFile(Path filePath) {
-
+        System.out.println("Ddf file processor");
     }
 }

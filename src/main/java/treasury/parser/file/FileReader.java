@@ -28,10 +28,15 @@ public class FileReader {
         }
     }
 
-    public List<Path> listFilesInDirectory(String path) throws IOException {
+    public List<Path> listFilesInDirectory(String path) {
 
-        return Files.list(Paths.get(path))
-                .filter(Files::isRegularFile)
-                .collect(Collectors.toList());
+        try {
+            return Files.list(Paths.get(path))
+                    .filter(Files::isRegularFile)
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 }
