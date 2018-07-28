@@ -4,6 +4,7 @@ import treasury.parser.config.arguments.Argument;
 import treasury.parser.config.arguments.ArgumentProcessor;
 import treasury.parser.file.FileReader;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,13 +40,33 @@ public class ParameterProcessor {
                     System.err.println("Помилка вчитання файлу конфігурації для лінії " + line + " назва змінної не підтримується");
                 }
             }
-//            else {
-//                System.out.println("Зігноровано лінію файлу конфігурації " + line);
-//            }
         });
     }
 
     public static String getParameter(Parameter parameter){
         return parameters.get(parameter);
+    }
+
+    public static List<String> getExtractFileNames(){
+        String[] extacts = parameters.get(Parameter.EXTRACT).split(",");
+        List<String> fileNames = new ArrayList<>();
+        for(int i = 0; i < extacts.length; i++){
+            if(i == 0 || i % 2 == 0){
+                fileNames.add(extacts[i]);
+            }
+        }
+
+        return fileNames;
+    }
+
+    public static Integer getNumberOfLinesForTxtFile(String fileName){
+        String[] extacts = parameters.get(Parameter.EXTRACT).split(",");
+        for(int i = 0; i < extacts.length; i++){
+            if(extacts[i].equals(fileName)){
+                return Integer.parseInt(extacts[i+1]);
+            }
+        }
+
+        return 0;
     }
 }

@@ -1,6 +1,7 @@
 package treasury.parser.processor;
 
 import treasury.parser.file.FileReader;
+import treasury.parser.processor.file.ProcessedFile;
 
 import java.nio.file.Path;
 
@@ -12,5 +13,5 @@ public abstract class FileProcessor {
         fileReader = new FileReader();
     }
 
-    public abstract void processFile(Path filePath);
+    public abstract ProcessedFile processFile(Path filePath);
 }

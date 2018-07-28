@@ -4,12 +4,16 @@ import treasury.parser.config.arguments.ArgumentProcessor;
 import treasury.parser.config.parameters.Parameter;
 import treasury.parser.config.parameters.ParameterProcessor;
 import treasury.parser.config.regex.PatternProcessor;
+import treasury.parser.export.FileExporter;
 import treasury.parser.file.FileReader;
 import treasury.parser.processor.FileProcessor;
 import treasury.parser.processor.factory.FileProcessorFactory;
+import treasury.parser.processor.file.ProcessedDbfFile;
+import treasury.parser.processor.file.ProcessedFile;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -23,15 +27,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        FileProcessorFactory fileProcessorFactory = new FileProcessorFactory();
-
-        FileReader fileReader = new FileReader();
-
-        List<Path> files = fileReader.listFilesInDirectory(ParameterProcessor.getParameter(Parameter.PATH));
-
-        files.forEach(file -> {
-            FileProcessor fileProcessor = fileProcessorFactory.getFileProcessor(file.getFileName().toString());
-            fileProcessor.processFile(file);
-        });
+        FileExporter fileExporter = new FileExporter();
+        fileExporter.exportProcessedFiles();
     }
 }

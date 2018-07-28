@@ -8,7 +8,7 @@ public enum Parameter {
     SAL_DBF("sal_dbf"),
     EMAIL("email"),
     REM("rem"),
-    EXTRACT("vypyska");
+    EXTRACT("vypysky");
 
     private String value;
 
